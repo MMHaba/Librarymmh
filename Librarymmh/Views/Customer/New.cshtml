@@ -1,0 +1,69 @@
+﻿@model Librarymmh.ViewModel.NewCustomerViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New Customer </h2>
+
+@using (Html.BeginForm("CreateCustomer", "Customer"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.DateOfBirth)
+        @Html.TextBoxFor(m => m.Customer.DateOfBirth, "{0:dd mm yyyy}", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Email)
+        @Html.TextBoxFor(m => m.Customer.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.StreetNumber)
+        @Html.TextBoxFor(m => m.Customer.StreetNumber, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.StreetName)
+        @Html.TextBoxFor(m => m.Customer.StreetName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.CityName)
+        @Html.TextBoxFor(m => m.Customer.CityName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.PostalCode)
+        @Html.TextBoxFor(m => m.Customer.PostalCode, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MemberShipType)
+        @Html.DropDownListFor(m => m.Customer.MemberShipTypeId, new SelectList(Model.MemberShipTypes,
+         "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+    </div>
+
+
+    @Html.HiddenFor(c => c.Customer.Id)
+    <button id="btnSubmit" type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#btnSubmit").on("click", function () {
+                toastr.success("The customer has been successfully added.");
+            })
+        });
+    </script>
+    
+    
+}

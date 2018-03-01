@@ -1,0 +1,74 @@
+﻿@model Librarymmh.ViewModel.NewBookViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New Book </h2>
+
+@using (Html.BeginForm("CreateBook", "Book"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Name)
+        @Html.TextBoxFor(m => m.Book.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.PublishedDate)
+        @Html.TextBoxFor(m => m.Book.PublishedDate, "{0:dd mm yyyy}", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.DateAdded)
+        @Html.TextBoxFor(m => m.Book.DateAdded, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Description)
+        @Html.TextBoxFor(m => m.Book.Description, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.AuthorName)
+        @Html.TextBoxFor(m => m.Book.AuthorName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.NumberInStock)
+        @Html.TextBoxFor(m => m.Book.NumberInStock, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.NumberAvailable)
+        @Html.TextBoxFor(m => m.Book.NumberAvailable, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Image)
+        @Html.TextBoxFor(m => m.Book.Image, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Genre)
+        @Html.DropDownListFor(m => m.Book.GenreId, new SelectList(Model.Genres,
+         "Id", "Name"), "Select Genre", new { @class = "form-control" })
+    </div>
+
+
+    @Html.HiddenFor(c => c.Book.Id)
+    <button id="btnSubmit" type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#btnSubmit").on("click", function () {
+                toastr.success("The Book has been successfully added.");
+            })
+        });
+    </script>
+
+
+}

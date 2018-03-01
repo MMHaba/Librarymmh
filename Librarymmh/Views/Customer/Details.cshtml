@@ -1,0 +1,65 @@
+﻿@model Librarymmh.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+  
+    <hr />
+    <div class="dl-horizontal">
+       
+        <div>
+            <strong>@Html.DisplayNameFor(model => model.Email):</strong>
+            
+            @Html.DisplayFor(model => model.Email)
+            
+        </div>
+
+        <div>
+            <strong>@Html.DisplayNameFor(model => model.DateOfBirth):</strong>
+            
+            @Html.DisplayFor(model => model.DateOfBirth)
+            
+        </div>
+
+        <div>
+            <strong>@Html.DisplayNameFor(model => model.StreetNumber):</strong>
+            
+            @Html.DisplayFor(model => model.StreetNumber)
+        </div>
+
+        <div>
+            <strong>@Html.DisplayNameFor(model => model.StreetName):</strong>
+            
+            @Html.DisplayFor(model => model.StreetName)
+            
+        </div>
+
+        <div>
+            <strong>@Html.DisplayNameFor(model => model.PostalCode):</strong>
+            
+            @Html.DisplayFor(model => model.PostalCode)
+            
+        </div>
+
+        <div>
+           <strong>@Html.DisplayNameFor(model => model.CityName):</strong>
+            
+                @Html.DisplayFor(model => model.CityName)
+            
+        </div>
+
+        <div>
+            <strong>@Html.DisplayNameFor(model => model.MemberShipType):</strong>
+            @Html.DisplayFor(model => model.MemberShipType.Name)
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,84 @@
+﻿@model Librarymmh.ViewModel.NewBookViewModel
+@{
+    ViewBag.Title = "EditForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Book Form</h2>
+
+@using (Html.BeginForm("Save", "Book",FormMethod.Post, new { enctype = "multipart/form-"}))
+{
+    //@Html.ValidationSummary(true, "Please fix the following errors.")
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Name)
+        @Html.TextBoxFor(m => m.Book.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.PublishedDate)
+        @Html.TextBoxFor(m => m.Book.PublishedDate, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.DateAdded)
+        @Html.TextBoxFor(m => m.Book.DateAdded, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Description)
+        @Html.TextBoxFor(m => m.Book.Description, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.AuthorName)
+        @Html.TextBoxFor(m => m.Book.AuthorName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.NumberInStock)
+        @Html.TextBoxFor(m => m.Book.NumberInStock, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.NumberAvailable)
+        @Html.TextBoxFor(m => m.Book.NumberAvailable, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Genre)
+        @Html.DropDownListFor(m => m.Book.GenreId, new SelectList(Model.Genres,
+         "Id", "Name"), "Select The Genre", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @*@Html.LabelFor(m => m.Book.Image)
+            @Html.TextBoxFor(m => m.Book.Image, new { @class = "form-control" })*@
+
+        <label for="file">Upload Image</label>
+        <input type="file" name="file" id="file" />
+        <br />
+        <input type="submit" value="Upload Image" />
+    </div>
+    @Html.HiddenFor(c => c.Book.Id)
+    //@Html.AntiForgeryToken()
+    <button id="btnSubmit" type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#btnSubmit").on("click", function () {
+                toastr.success("Book successfully updated");
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+

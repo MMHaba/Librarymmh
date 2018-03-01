@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Librarymmh.Models.Book>
+@{
+    ViewBag.Title = "Indexwebapi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Indexwebapi</h2>
+
+<p>
+    @Html.ActionLink("New Customer", "New", "Customer", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="books" class="table table-bordered table-hover">
+   
+        <tr>
+            <td>Name</td>
+            <td>Genre</td>
+            <td>Description</td>
+            <td>Published Date</td>
+            <td>Added Date</td>
+            <td>Author Name</td>
+            <td>Number In Stock</td>
+            <td>Number Available</td>
+        </tr>
+    
+</table>
+  @section scriptszxcvbnm
+  {
+    <script>
+
+        var uri = 'api/books';
+        $(document).ready(function () {
+
+            $.getJSON(uri)
+            .done(function (data) {
+                $.each(data, function (key, item) {
+                    $('#books').append("<tr><td>" + item.Name + "</td>" + "<td>"
+                        + item.Genre.Name
+                        + "</td>" + "<td>" + item.Description + "</td>" + "<td>"
+                        + item.PublishedDate + "</td>" + "<td>" + item.DateAdded + "</td>" + "<td>"
+                        + item.AuthorName + "</td>"
+                        + "<td>" + item.NumberInStock + "</td>" + "<td>" + item.NumberAvailable
+                        + "</td></tr>"
+                        );
+                });
+            });
+        });  
+    </script>      
+}
+    
